@@ -1,0 +1,13 @@
+ALTER TABLE towns
+CHANGE COLUMN town_id id VARCHAR(50);
+
+ALTER TABLE towns
+MODIFY COLUMN id INT AUTO_INCREMENT;
+
+ALTER TABLE minions
+ADD COLUMN town_id INT;
+
+ALTER TABLE minions
+ADD CONSTRAINT fk_minions_towns
+FOREIGN KEY minions (town_id)
+REFERENCES towns (id);
